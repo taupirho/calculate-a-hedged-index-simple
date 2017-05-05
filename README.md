@@ -12,17 +12,16 @@ currency **curr** contained in a database table called **CURR_RATES**
 The Oracle PL/SQL in this repository shows the calculation required. It should be reasonably starightforward to convert to 
 other database systems and languages. The structure of our database tables are as follows:-
 
-INDEX_DHIST
-------------
-I_MNEM VARCHAR(7)    /* 7 character Index identifier or whatever you want this to be */
-I_DATE DATE          /* The index value date   */
-I_VAL NUMBER         /* The index value itself */
+**INDEX_DHIST**
+
+* I_MNEM VARCHAR(7)  // 7 character index identifier or whatever you want this to be   
+* I_DATE DATE        // The index value date   
+* I_VAL NUMBER       // The index value itself 
 
 
-CURR_RATES
------------
+**CURR_RATES**
  
-C_MNEM   VARCHAR2(3)  /* 3 character currency mnemonic or whtever you want this to be */
-CF_DATE  DATE         /* cross rate date */
-CF_TERM  VARCHAR2(3)  /* 1M, 3M etc  */
-CF_XRATE NUMBER       /* the cross rate itself */
+* C_MNEM   VARCHAR2(3)  // 3 character currency mnemonic or whtever you want this to be 
+* CF_DATE  DATE         // cross rate date 
+* CF_TERM  VARCHAR2(3)  // 1M, 3M etc  
+* CF_XRATE NUMBER       // the cross rate itself 
