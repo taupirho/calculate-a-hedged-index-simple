@@ -91,13 +91,13 @@ begin
       dbms_output.put_line(' Previous end of period date :' || prev_date ) ;
    end if;
  
-   /* get the unhedged performance in currency curr
+   /* get the unhedged performance in currency curr */
  
    select
       ((b1.x_trval/b2.x_trval) * (h2.c_xrate/h1.c_xrate))
       ((b1.x_cpval/b2.x_cpval) * (h2.c_xrate/h1.c_xrate))
    into tot_ret_unhedged, tot_cap_unhedged
-   from index_dhist b1,index_dhist b2 , usd_rates h1,usd_rates h2
+   from index_dhist b1,index_dhist b2 , curr_rates h1,curr_rates h2
    where b1.bx_mnem = b2.bx_mnem
    and b1.x_date = pdate
    and h1.c_date = b1.x_date
@@ -122,7 +122,7 @@ begin
    for c1_rec in
    (
       select h1.c_xrate,u.cf_xrate c_xrate2
-      from  usd_rates h1, usd_rates u
+      from  curr_rates h1, curr_rates u
       where h1.currency = u.c_mnem
       and u.cf_term = fwd_term
       and u.cf_date = h1.c_date
@@ -229,7 +229,7 @@ begin
            and x_date = pdate ;
  
            insert into index_dhist(bx_mnem,x_date,x_trval,x_cpval)
-           selectmnem_hedge,pdate,hedged_tr_index,hedged_cr_index
+           select mnem_hedge,pdate,hedged_tr_index,hedged_cr_index
            from dual;
  
            commit;
