@@ -28,8 +28,8 @@
 create or replace procedure hedge_portfolio
 (
    the_date IN varchar2,     -- normally todays date
-   mnem IN varchar2,         -- identifier of the index/portfolio you want to hedge
-   mnem_hedge IN varchar2,   -- identifier of the calculated hedge index/portfolio
+   mnem IN varchar2,         -- identifier of the existing index/portfolio you want to hedge
+   mnem_hedge IN varchar2,   -- identifier of the new calculated hedge index/portfolio
    curr IN varchar2,         -- forward currency you are using to hedge e.g HKD
    fwd_term IN varchar2,     -- the fwrd rate we are using e.g  3 Mth, 1 Mth etc..
    update_db IN boolean := false,      -- do we update the database with our new index value
@@ -83,7 +83,7 @@ begin
    select trunc(pdate,trunc_param) - 1 - decode(to_char(trunc(pdate,trunc_param)-1,'DY'),'SAT',1,'SUN'
    into prev_date from dual ;
  
-   if debug = true then
+  if debug = true then
  
       dbms_output.put_line(' Current Date : ' || pdate ) ;
       dbms_output.put_line(' Date truncparam : ' || trunc_param ) ;
@@ -239,7 +239,7 @@ begin
           and x_date = pdate ;
  
           insert into index_dhist(bx_mnem, x_date , x_trval)
-          selectmnem_hedge, pdate ,hedged_tr_index from dual;
+          select mnem_hedge, pdate ,hedged_tr_index from dual;
  
           commit;
  
