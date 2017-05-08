@@ -62,7 +62,7 @@ is
  
 begin
  
-   selectto_date(the_date,'yyyymmdd')
+   select to_date(the_date,'yyyymmdd')
    into pdate from dual;
  
    dbms_output.put_line(' Current Date : ' || pdate ) ;
