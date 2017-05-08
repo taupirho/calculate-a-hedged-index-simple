@@ -15,7 +15,7 @@ other database systems and languages. The structure of our database tables are a
 **INDEX_DHIST**
 
 * I_MNEM VARCHAR(7)  // 7 character index identifier or whatever you want this to be   
-* I_DATE DATE        // The index value date   
+* X_DATE DATE        // The index value date   
 * I_VAL NUMBER       // The index value itself 
 
 
