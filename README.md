@@ -1,8 +1,9 @@
 # calculate-a-hedged-index
 
 Let’s assume that on a daily baisis you calculate and store the total return of an index in some currency, say US 
-dollar (USD) terms. You now want to create/calculate a new index based on it but hedged in a forward currency 
-(e.g HKD) over a specific time period e.g 3mths is an industry standard. 
+dollar (USD) terms. With the assumption that the constituents of the index are all denominated in the same currency (ie USD),
+you want to create/calculate a new index based on it but hedged in a forward currency 
+(e.g HKD) for a specific forward time period e.g 3 months is an industry standard. 
  
 We assume we have a database table **INDEX_DHIST** that contains a time series of daily Total Return values for our 
 established index in whatever base currency terms e.g US dollars. We also assume we have a daily history of 
@@ -21,7 +22,7 @@ other database systems and languages. The structure of our database tables are a
 
 **CURR_RATES**
  
-* C_MNEM   VARCHAR2(3)  // 3 character currency mnemonic or whtever you want this to be 
+* C_MNEM   VARCHAR2(3)  // 3 character currency mnemonic or whatever you want this to be 
 * CF_DATE  DATE         // cross rate date 
-* CF_TERM  VARCHAR2(3)  // 1M, 3M etc  
+* CF_TERM  VARCHAR2(2)  // 1M, 3M etc  
 * CF_XRATE NUMBER       // the cross rate itself 
