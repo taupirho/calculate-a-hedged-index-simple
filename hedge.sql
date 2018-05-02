@@ -3,6 +3,11 @@
  * Calculate the hedged  total return (TR) of a portfolio/index based on a  forward  
  * rate (fwd_term) of currency ( curr )
  *
+ ****
+ **** There is an assumption that all the constituents of index to be hedged are 
+ **** denominated in the same underlying currency
+ ****
+ *
  * Hedged Total Return  = prev end of period hedged Total Return x  Hedge Return
  *
  * We get prev end of period Hedged Total Return from the index_dhist table and     
