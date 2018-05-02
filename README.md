@@ -1,4 +1,4 @@
-# calculate-a-hedged-index
+# calculate-a-hedged-index-simple
 
 Let’s assume that on a daily baisis you calculate and store the total return of an index in some currency, say US 
 dollar (USD) terms. With the assumption that the constituents of the index are all denominated in the same currency (ie USD),
